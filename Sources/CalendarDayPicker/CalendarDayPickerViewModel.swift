@@ -315,12 +315,12 @@ public class CalendarDayPickerViewModel: DayPicker, DayPickerViewModel {
     
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if startDayIndex != nil && endDayIndex != nil && !isSingleDatePicker { // range is chosen, starting a new range
-            startDayIndex = indexPath
             endDayIndex = nil
+            startDayIndex = indexPath
         } else if let startDayIndex = self.startDayIndex, !isSingleDatePicker { // chosen start, now choosing end
             if indexPath < startDayIndex {
-                self.startDayIndex = indexPath
                 endDayIndex = nil
+                self.startDayIndex = indexPath
             } else {
                 endDayIndex = indexPath
             }
