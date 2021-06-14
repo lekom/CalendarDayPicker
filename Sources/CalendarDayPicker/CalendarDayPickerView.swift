@@ -12,9 +12,15 @@ public class CalendarDatePickerView : UIView, UICollectionViewDataSource, UIColl
         
     private let viewModel: DayPickerViewModel
     
+    private var contentViewLeadingMarginConstraint: NSLayoutConstraint?
+    private var contentViewTrailingMarginConstraint: NSLayoutConstraint?
+    
+    private var cellSize: CGFloat = 0
+    
     private lazy var contentView: UIView = {
         let view = UIView()
         view.backgroundColor = .white
+        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
@@ -110,6 +116,19 @@ public class CalendarDatePickerView : UIView, UICollectionViewDataSource, UIColl
         
         self.addSubview(contentView)
         contentView.addSubview(stackView)
+        
+        let leadingConstraint = contentView.leadingAnchor.constraint(equalTo: leadingAnchor)
+        contentViewLeadingMarginConstraint = leadingConstraint
+        
+        let trailingConstraint = contentView.trailingAnchor.constraint(equalTo: trailingAnchor)
+        contentViewTrailingMarginConstraint = trailingConstraint
+        
+        NSLayoutConstraint.activate([
+            contentView.topAnchor.constraint(equalTo: topAnchor),
+            leadingConstraint,
+            trailingConstraint,
+            contentView.bottomAnchor.constraint(equalTo: bottomAnchor)
+        ])
 
         stackView.pinEdgesToSuperView()
     }
@@ -122,11 +141,16 @@ public class CalendarDatePickerView : UIView, UICollectionViewDataSource, UIColl
         super.layoutSubviews()
         
         // prevent minute gaps due to mod(view.bounds.width, 7) != 0...
-        let width = floor(self.bounds.width / 7) * 7
-        self.contentView.frame = CGRect(x: round((self.bounds.width - width) / 2),
-                                        y: 0,
-                                        width: width,
-                                        height: self.bounds.height)
+        cellSize = floor(self.bounds.width / 7)
+        let width = cellSize * 7
+//        self.contentView.frame = CGRect(x: round((self.bounds.width - width) / 2),
+//                                        y: 0,
+//                                        width: width,
+//                                        height: self.bounds.height)
+        let xMargin = ((self.bounds.width - width) / 2).rounded(.down)
+        
+        contentViewLeadingMarginConstraint?.constant = xMargin
+        contentViewTrailingMarginConstraint?.constant = xMargin
         
         collectionViewLayout?.invalidateLayout()
     }
@@ -141,8 +165,7 @@ public class CalendarDatePickerView : UIView, UICollectionViewDataSource, UIColl
     }
     
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let size = contentView.frame.size.width / 7
-        return CGSize(width: size, height: size)
+        return CGSize(width: cellSize, height: cellSize)
     }
     
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
