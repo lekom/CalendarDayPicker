@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "LMTime",
+        "repositoryURL": "https://github.com/lekom/LMTime.git",
+        "state": {
+          "branch": "main",
+          "revision": "f2a8c42eb0e57db3485a58baf608205bd4ecc085",
+          "version": null
+        }
+      }
+    ]
+  },
+  "version": 1
+}
