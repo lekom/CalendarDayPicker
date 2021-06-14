@@ -143,11 +143,7 @@ public class CalendarDatePickerView : UIView, UICollectionViewDataSource, UIColl
         // prevent minute gaps due to mod(view.bounds.width, 7) != 0...
         cellSize = floor(self.bounds.width / 7)
         let width = cellSize * 7
-//        self.contentView.frame = CGRect(x: round((self.bounds.width - width) / 2),
-//                                        y: 0,
-//                                        width: width,
-//                                        height: self.bounds.height)
-        let xMargin = (self.bounds.width - width) / 2
+        let xMargin = (self.bounds.width - width) / 2 // DON'T ROUND THIS. GAPS CAN FORM BETWEEN HIGHLIGHTED CELLS
         
         contentViewTrailingMarginConstraint?.constant = -xMargin
         contentViewLeadingMarginConstraint?.constant = xMargin
