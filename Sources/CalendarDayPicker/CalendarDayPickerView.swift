@@ -19,7 +19,7 @@ public class CalendarDatePickerView : UIView, UICollectionViewDataSource, UIColl
     }()
     
     private lazy var stackView: UIStackView = {
-        let stack = UIStackView(arrangedSubviews: [dateRangeLabel, dayHeadersContainerView, collectionView])
+        let stack = UIStackView(arrangedSubviews: [UIView(), dateRangeLabel, dayHeadersContainerView, collectionView])
         stack.spacing = 5.0
         stack.axis = .vertical
         stack.distribution = .fill
