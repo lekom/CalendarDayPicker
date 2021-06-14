@@ -12,14 +12,14 @@ public class CalendarDatePickerView : UIView, UICollectionViewDataSource, UIColl
         
     private let viewModel: DayPickerViewModel
     
-    private(set) lazy var contentView: UIView = {
+    private lazy var contentView: UIView = {
         let view = UIView()
         view.backgroundColor = .white
         return view
     }()
     
-    private(set) lazy var stackView: UIStackView = {
-        let stack = UIStackView()
+    private lazy var stackView: UIStackView = {
+        let stack = UIStackView(arrangedSubviews: [dateRangeLabel, dayHeadersContainerView, collectionView])
         stack.spacing = 5.0
         stack.axis = .vertical
         stack.distribution = .fill
@@ -117,10 +117,7 @@ public class CalendarDatePickerView : UIView, UICollectionViewDataSource, UIColl
         
         self.addSubview(contentView)
         contentView.addSubview(stackView)
-        stackView.addArrangedSubview(dateRangeLabel)
-        stackView.addArrangedSubview(dayHeadersContainerView)
         dayHeadersContainerView.addSubview(dayHeaders)
-        stackView.addArrangedSubview(collectionView)
 
         stackView.pinEdgesToSuperView()
         dayHeaders.pinEdgesToSuperView()
