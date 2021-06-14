@@ -1,3 +1,3 @@
 # CalendarDayPicker
 
-A description of this package.
+A date picker for selecting a start and end day.
