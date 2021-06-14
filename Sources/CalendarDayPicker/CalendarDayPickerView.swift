@@ -147,10 +147,10 @@ public class CalendarDatePickerView : UIView, UICollectionViewDataSource, UIColl
 //                                        y: 0,
 //                                        width: width,
 //                                        height: self.bounds.height)
-        let xMargin = ((self.bounds.width - width) / 2).rounded(.down)
+        let xMargin = (self.bounds.width - width) / 2
         
+        contentViewTrailingMarginConstraint?.constant = -xMargin
         contentViewLeadingMarginConstraint?.constant = xMargin
-        contentViewTrailingMarginConstraint?.constant = xMargin
         
         collectionViewLayout?.invalidateLayout()
     }
