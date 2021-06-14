@@ -261,9 +261,9 @@ public class CalendarDayPickerViewModel: DayPicker, DayPickerViewModel {
             cell.dayLabel.text = String(cellDay.day)
             
             if cellDay < firstValidDay || cellDay > lastValidDay {
-                cell.dayLabel.textColor = .lightGray
+                cell.dayLabel.textColor = .quaternaryLabel
             } else {
-                cell.dayLabel.textColor = .black
+                cell.dayLabel.textColor = .label
             }
         } else {
             cell.dayLabel.text = ""
