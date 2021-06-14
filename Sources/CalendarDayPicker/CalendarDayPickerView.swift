@@ -19,7 +19,7 @@ public class CalendarDatePickerView : UIView, UICollectionViewDataSource, UIColl
     
     private lazy var contentView: UIView = {
         let view = UIView()
-        view.backgroundColor = .white
+        view.backgroundColor = .systemBackground
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -44,7 +44,7 @@ public class CalendarDatePickerView : UIView, UICollectionViewDataSource, UIColl
             dayHeader.translatesAutoresizingMaskIntoConstraints = false
             dayHeader.text = String(day.first!) //first character of the day
             dayHeader.textAlignment = .center
-            dayHeader.textColor = .black
+            dayHeader.textColor = .label
             stack.addArrangedSubview(dayHeader)
         }
         return stack
@@ -53,9 +53,9 @@ public class CalendarDatePickerView : UIView, UICollectionViewDataSource, UIColl
     private var dateRangeLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
-        label.textColor = .black
+        label.textColor = .label
         label.font = .systemFont(ofSize: 18)
-        label.backgroundColor = .white
+        label.backgroundColor = .systemBackground
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -77,7 +77,7 @@ public class CalendarDatePickerView : UIView, UICollectionViewDataSource, UIColl
         collectionView.alwaysBounceVertical = true
         collectionView.allowsSelection = true
         collectionView.allowsMultipleSelection = true
-        collectionView.backgroundColor = .white
+        collectionView.backgroundColor = .systemBackground
         
         collectionView.dataSource = self
         collectionView.layoutMargins = .zero
@@ -99,7 +99,7 @@ public class CalendarDatePickerView : UIView, UICollectionViewDataSource, UIColl
         contentView.layer.cornerRadius = radius
         contentView.clipsToBounds = true
         self.layer.cornerRadius = radius
-        self.layer.shadowColor = UIColor.black.cgColor
+        self.layer.shadowColor = UIColor.label.cgColor
         self.layer.shadowOpacity = 0.2
         self.layer.shadowOffset = CGSize(width: 2, height: 2)
         self.layer.shadowPath = UIBezierPath(roundedRect: self.bounds, cornerRadius: radius).cgPath
@@ -112,7 +112,7 @@ public class CalendarDatePickerView : UIView, UICollectionViewDataSource, UIColl
         
         super.init(frame: .zero)
         
-        self.backgroundColor = .white
+        self.backgroundColor = .systemBackground
         
         self.addSubview(contentView)
         contentView.addSubview(stackView)

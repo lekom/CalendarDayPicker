@@ -13,7 +13,7 @@ class CalendarMonthSectionHeaderView : UICollectionReusableView {
     override init(frame: CGRect) {
         super.init(frame: frame)
                 
-        self.backgroundColor = .white
+        self.backgroundColor = .systemBackground
         self.addSubview(titleLabel)
         
         titleLabel.translatesAutoresizingMaskIntoConstraints = false

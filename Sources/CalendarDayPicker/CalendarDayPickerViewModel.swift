@@ -270,12 +270,13 @@ public class CalendarDayPickerViewModel: DayPicker, DayPickerViewModel {
         }
         
         if selectedCells.contains(indexPath) && cellDay != nil {
-            let highlightColor = UIColor(red: 0xEB / 0xFF, green: 0xF0 / 0xFF, blue: 0xFF / 0xFF, alpha: 0.8)
+            let highlightColor: UIColor = .systemBlue.withAlphaComponent(0.8)
+            //UIColor(red: 0xEB / 0xFF, green: 0xF0 / 0xFF, blue: 0xFF / 0xFF, alpha: 0.8)
             
             if indexPath == startDayIndex {
-                cell.backgroundColor = .white
-                cell.circleView.backgroundColor = .black
-                cell.dayLabel.textColor = .white
+                cell.backgroundColor = .systemBackground
+                cell.circleView.backgroundColor = .label
+                cell.dayLabel.textColor = .systemBackground
                 if selectedCells.count == 1 {
                     cell.rightHighlight.backgroundColor = .clear
                 } else {
@@ -283,20 +284,20 @@ public class CalendarDayPickerViewModel: DayPicker, DayPickerViewModel {
                 }
                 cell.leftHighlight.backgroundColor = .clear
             } else if indexPath == endDayIndex {
-                cell.backgroundColor = .white
-                cell.circleView.backgroundColor = .black
-                cell.dayLabel.textColor = .white
+                cell.backgroundColor = .systemBackground
+                cell.circleView.backgroundColor = .label
+                cell.dayLabel.textColor = .systemBackground
                 cell.rightHighlight.backgroundColor = .clear
                 cell.leftHighlight.backgroundColor = highlightColor
             } else {
                 cell.backgroundColor = highlightColor
                 cell.circleView.backgroundColor = .clear
-                cell.dayLabel.textColor = .black
+                cell.dayLabel.textColor = .label
                 cell.rightHighlight.backgroundColor = .clear
                 cell.leftHighlight.backgroundColor = .clear
             }
         } else {
-            cell.backgroundColor = .white
+            cell.backgroundColor = .systemBackground
             cell.circleView.backgroundColor = .clear
             cell.rightHighlight.backgroundColor = .clear
             cell.leftHighlight.backgroundColor = .clear
