@@ -33,8 +33,8 @@ public class CalendarDayPickerViewController: UIViewController {
         backgroundView.pinEdgesToSuperView()
         
         NSLayoutConstraint.activate([
-            calendarView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 100),
-            calendarView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -100),
+            calendarView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24),
+            calendarView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24),
             calendarView.heightAnchor.constraint(equalTo: calendarView.widthAnchor),
             calendarView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         ])
